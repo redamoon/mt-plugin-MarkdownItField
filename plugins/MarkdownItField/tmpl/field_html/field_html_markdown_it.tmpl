@@ -1,0 +1,45 @@
+<div
+  id="markdown-it-field-<mt:var name="content_field_id" escape="html">"
+  class="markdown-it-field-container"
+  <mt:var name="required" />
+>
+  <mt:loop name="markdown_it_data">
+    <div class="mt-draggable">
+      <div class="col text-wrap">
+        <div class="mt-draggable__content markdown-it-data">
+          <label><mt:Var name="body_label" escape="html" /></label>
+          <textarea name="markdown-it-field-<mt:Var name="content_field_id" escape="html" />-body" class="form-control" rows="3" mt:watch-change="1"><mt:Var name="body" escape="html" /></textarea>
+          <p class="mb-3 mt-3"><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample0" aria-expanded="false" aria-controls="collapseExample0"><mt:Var name="preview_label" escape="html" /></button></p>
+          <div class="collapse" id="collapseExample0">
+            <label><mt:Var name="preview_label" escape="html" /></label>
+            <textarea name="markdown-it-field-<mt:Var name="content_field_id" escape="html" />-preview" class="form-control" rows="3" mt:watch-change="1"><mt:Var name="preview" escape="html" /></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mt:loop>
+
+<mt:unless name="setup_markdown_it_js">
+  <mt:var name="setup_markdown_it_js" value="1">
+  <style>
+    textarea[name="markdown-it-field-<mt:var name="content_field_id" escape="html">-body"] {
+      height: 250px;
+    }
+    textarea[name="markdown-it-field-<mt:var name="content_field_id" escape="html">-preview"] {
+      height: 200px;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/10.0.0/markdown-it.min.js"></script>
+  <mt:setvarblock name="jq_js_include" append="1">
+    var markdownIt = window.markdownit({
+      html   : true,
+      breaks : true
+    });
+    jQuery('textarea[name="markdown-it-field-<mt:var name="content_field_id" escape="html">-body"]').on('change', function(){
+      var thisFieldValue = $(this).val();
+      var targetFieldValue = 'textarea[name="markdown-it-field-<mt:var name="content_field_id" escape="html">-preview"]';
+      var md = markdownIt.render(thisFieldValue);
+      jQuery(targetFieldValue).val(md)
+    })
+  </mt:setvarblock>
+</mt:unless>

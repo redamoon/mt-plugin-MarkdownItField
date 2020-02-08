@@ -1,0 +1,46 @@
+id: MarkdownItField
+name: MarkdownItField
+version: 1.0.0
+author_name: redamoon
+author_link: https://www.redamoon.net/
+description: <__trans phrase="This plugin adds a markdown it field type.">
+l10n_lexicon:
+    ja:
+        This plugin adds a markdown it field type.: "MarkdownItのフィールドを追加"
+        MarkdownIt: マークダウン
+        Body: 本文
+        Preview: HTMLプレビュー
+        Body Label: Markdownのラベル
+        Preview Label: HTMLプレビューのラベル
+content_field_types:
+    markdown_it:
+        label: MarkdownIt
+        data_type: 'text'
+        order: 210
+        icon_class: 'ic_multiline'
+        can_data_label_field: 0
+        data_load_handler: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::data_load_handler
+        field_html: 'field_html/field_html_markdown_it.tmpl'
+        field_html_params: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::field_html_params
+        field_value_handler: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::field_value_handler
+        replaceable: 1
+        tag_handler: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::tag_handler
+        feed_value_handler: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::feed_value_handler
+        preview_handler: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::preview_handler
+        replace_handler: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::replace_handler
+        search_handler: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::search_handler
+        list_props:
+            markdown_it:
+                base: '__virtual.string'
+                col: 'value_varchar'
+                display: 'none'
+                filter_editable: 0
+                html: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::list_prop_html
+                terms: $MarkdownItField::MarkdownItField::ContentFieldType::MarkdownItField::list_prop_terms
+        options_html: 'content_field_type_options/markdown_it.tmpl'
+        options:
+            - label
+            - description
+            - required
+            - body
+            - preview
