@@ -2,9 +2,13 @@
 
 Movable Type 7 ContentField MarkdownIt Plugin
 
+Movable Type 7 のコンテンツフィールドに マークダウン投稿を可能にします。
+
+![ScreenShot](ScreenShot.png)
+
 ## Requirement
 
-Movable Type 7
+- Movable Type 7
 
 ## Installation
 
